@@ -82,6 +82,8 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.initialNumber = initialNumber,
+    this.calls = 0
   }
 
   /**
@@ -98,6 +100,25 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    if (this.calls === 0) {
+      this.increment_call_count()
+      return this.initialNumber
+    } else if (this.calls === 1) {
+      this.decrement_initialNumber()
+      return this.initialNumber
+    }
+  }
+
+  decrement_initialNumber() {
+    if (this.initialNumber === 0) {
+      return this.initialNumber
+    } else {
+      this.initialNumber -= 1
+    }
+  }
+
+  increment_call_count() {
+    this.calls += 1
   }
 }
 

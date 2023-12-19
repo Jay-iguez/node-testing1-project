@@ -50,7 +50,7 @@ describe('[Exercise 3] findLargestInteger', () => {
     const expected = 20
     const input = [{ integer: 2 }, { integer: 3 }, { integer: 20 }, { integer: 12 }, { integer: 5 }]
     const actual = utils.findLargestInteger(input)
-    
+
     expect(actual).toBe(expected)
     expect(actual).toBeDefined()
   })
@@ -62,9 +62,33 @@ describe('[Exercise 4] Counter', () => {
   beforeEach(() => {
     counter = new utils.Counter(3) // each test must start with a fresh couter
   })
-  test('sample', () => {
-    expect(5).toBe(5)
+  test('[6] the FIRST call of counter.countDown returns the initial count', () => {
+    const expected = 3
+    const output = counter.countDown()
+
+    expect(output).toBe(expected)
   })
+  test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
+    let expected = 3
+    let output = counter.countDown()
+
+    expect(output).toBe(expected)
+
+    expected = 2
+    output = counter.countDown()
+    expect(output).toBe(expected)
+  })
+  test('[8] the count eventually reaches zero but does not go below zero', () => {
+    let expected = 0
+    let output
+    let amount_to_iterate = 5
+    for (let i = 0; i <= amount_to_iterate; i++){
+      output = counter.countDown()
+    }
+
+    expect(output).toBe(expected)
+  })
+
   // test('[6] the FIRST CALL of counter.countDown returns the initial count', () => {})
   // test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {})
   // test('[8] the count eventually reaches zero but does not go below zero', () => {})
