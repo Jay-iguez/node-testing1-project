@@ -25,7 +25,7 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
     const input = { foo: '   foo      ', bar: '     bar', baz: '      baz' }
     const expected_final = { foo: 'foo', bar: 'bar', baz: 'baz' }
     const actual = utils.trimPropertiesMutation(input)
-    
+
     expect(actual).toEqual(expected_final)
     expect(actual).toMatchObject(expected_final)
     expect(actual).not.toEqual(invalid_structure)
@@ -37,7 +37,7 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
     const expected_final = { foo: 'foo', bar: 'bar', baz: 'baz' }
     const input = expected
     const actual = utils.trimPropertiesMutation(input)
-    
+
     expect(actual).toBe(expected)
     expect(actual).toEqual(expected_final)
   })
@@ -46,8 +46,13 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
-  test('sample', () => {
-    expect(5).toBe(5)
+  test('[5] returns the largest number in an array of objects', () => {
+    const expected = 20
+    const input = [{ integer: 2 }, { integer: 3 }, { integer: 20 }, { integer: 12 }, { integer: 5 }]
+    const actual = utils.findLargestInteger(input)
+    
+    expect(actual).toBe(expected)
+    expect(actual).toBeDefined()
   })
   // test('[5] returns the largest number in an array of objects { integer: 2 }', () => {})
 })

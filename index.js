@@ -20,7 +20,7 @@ const trim_obj_helper = (obj, action) => {
   for (const key in obj) {
     const trimmed_key_value = obj[key].trim()
 
-    trimmed_obj[key] = trimmed_key_value // I originally has this to trimmed_obj = {...trimmed_obj, [key] : trimmed_key_value} THIS DIDN'T WORK and caused me a ton of trouble. I won't forget next time...
+    trimmed_obj[key] = trimmed_key_value // I originally has this to trimmed_obj = {...trimmed_obj, [key] : trimmed_key_value} THIS DIDN'T WORK and caused me a ton of trouble. That's a copy Jayden, not a direct reference. I won't forget next time...
   }
 
   return trimmed_obj
@@ -62,6 +62,17 @@ function trimPropertiesMutation(obj) {
  */
 function findLargestInteger(integers) {
   // ✨ implement
+
+  let largest_integer = integers[0].integer
+
+  integers.forEach(num => {
+    if (num.integer > largest_integer) {
+      largest_integer = num.integer
+    }
+  })
+
+  return largest_integer
+
 }
 
 class Counter {
