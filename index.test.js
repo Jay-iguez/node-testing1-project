@@ -12,6 +12,7 @@ describe('[Exercise 1] trimProperties', () => {
     const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
     const input = expected
     const actual = utils.trimProperties(input)
+
     expect(actual).not.toBe(expected)
     expect(input).toMatchObject(expected)
   })
@@ -20,6 +21,18 @@ describe('[Exercise 1] trimProperties', () => {
 
 describe('[Exercise 2] trimPropertiesMutation', () => {
   test('[3] returns an object with the properites trimmed', () => {
+    const invalid_structure = { foo: '   foo      ', bar: '     bar', baz: '      baz' }
+    const input = { foo: '   foo      ', bar: '     bar', baz: '      baz' }
+    const expected_final = { foo: 'foo', bar: 'bar', baz: 'baz' }
+    const actual = utils.trimPropertiesMutation(input)
+    
+    expect(actual).toEqual(expected_final)
+    expect(actual).toMatchObject(expected_final)
+    expect(actual).not.toEqual(invalid_structure)
+  })
+  // test('[3] returns an object with the properties trimmed', () => {})
+
+  test('[4] the object returned is the exact same one we passed in', () => {
     const expected = { foo: '   foo      ', bar: '     bar', baz: '      baz' }
     const expected_final = { foo: 'foo', bar: 'bar', baz: 'baz' }
     const input = expected
@@ -28,8 +41,6 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
     expect(actual).toBe(expected)
     expect(actual).toEqual(expected_final)
   })
-  // test('[3] returns an object with the properties trimmed', () => {})
-
 
   // test('[4] the object returned is the exact same one we passed in', () => {})
 })
