@@ -6,16 +6,31 @@
  * EXAMPLE
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
-function trimProperties(obj) {
-  // ✨ implement
 
-  let trimmed_obj = {}
+const trim_obj_helper = (obj, action) => {
+  let trimmed_obj
+
+  if (action === 'copy') {
+    trimmed_obj = obj
+
+  } else if (action === undefined) {
+    trimmed_obj = {}
+  }
 
   for (const key in obj) {
     const trimmed_key_value = obj[key].trim()
 
-    trimmed_obj = {...trimmed_obj, [key] : trimmed_key_value}
+    trimmed_obj[key] = trimmed_key_value // I originally has this to trimmed_obj = {...trimmed_obj, [key] : trimmed_key_value} THIS DIDN'T WORK and caused me a ton of trouble. I won't forget next time...
   }
+
+  return trimmed_obj
+
+}
+
+function trimProperties(obj) {
+  // ✨ implement
+
+  let trimmed_obj = trim_obj_helper(obj)
 
   return trimmed_obj
 }
@@ -29,6 +44,11 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
+
+  let trimmed_obj = trim_obj_helper(obj, 'copy')
+
+  return trimmed_obj
+
   // ✨ implement
 }
 

@@ -10,18 +10,27 @@ describe('[Exercise 1] trimProperties', () => {
   })
   test('[2] returns a copy, leaving the original object intact', () => {
     const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
-    const input = {...expected}
-    expect(input).not.toBe(expected)
+    const input = expected
+    const actual = utils.trimProperties(input)
+    expect(actual).not.toBe(expected)
     expect(input).toMatchObject(expected)
   })
   // test('[2] returns a copy, leaving the original object intact', () => {})
 })
 
 describe('[Exercise 2] trimPropertiesMutation', () => {
-  test('sample', () => {
-    expect(5).toBe(5)
+  test('[3] returns an object with the properites trimmed', () => {
+    const expected = { foo: '   foo      ', bar: '     bar', baz: '      baz' }
+    const expected_final = { foo: 'foo', bar: 'bar', baz: 'baz' }
+    const input = expected
+    const actual = utils.trimPropertiesMutation(input)
+    
+    expect(actual).toBe(expected)
+    expect(actual).toEqual(expected_final)
   })
   // test('[3] returns an object with the properties trimmed', () => {})
+
+
   // test('[4] the object returned is the exact same one we passed in', () => {})
 })
 
