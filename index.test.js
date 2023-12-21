@@ -99,7 +99,68 @@ describe('[Exercise 5] Seasons', () => {
   beforeEach(() => {
     seasons = new utils.Seasons() // each test must start with fresh seasons
   })
-
+  test('[9] the FIRST call of seasons.next returns "summer"', () => {
+    let expected = 'summer'
+    let actual = seasons.next()
+    expect(actual).toBe(expected)
+    expect(typeof actual).toBe('string')
+    expect(actual).toBeDefined()
+  })
+  test('[10] the SECOND call of seasons.next returns "fall"', () => {
+    let expected = 'fall'
+    let amount_to_iterate = 1
+    let actual
+    for (let i = 0; i <= amount_to_iterate; i++){
+      actual = seasons.next()
+    }
+    expect(actual).toBe(expected)
+    expect(typeof actual).toBe('string')
+    expect(actual).toBeDefined()
+  })
+  test('[11] the THIRD call of seasons.next returns "winter"', () => {
+    let expected = 'winter'
+    let amount_to_iterate = 2
+    let actual
+    for (let i = 0; i <= amount_to_iterate; i++){
+      actual = seasons.next()
+    }
+    expect(actual).toBe(expected)
+    expect(typeof actual).toBe('string')
+    expect(actual).toBeDefined()
+  })
+  test('[12] the FOURTH call of seasons.next returns "spring"', () => {
+    let expected = 'spring'
+    let amount_to_iterate = 3
+    let actual
+    for (let i = 0; i <= amount_to_iterate; i++){
+      actual = seasons.next()
+    }
+    expect(actual).toBe(expected)
+    expect(typeof actual).toBe('string')
+    expect(actual).toBeDefined()
+  })
+  test('[13] the FIFTH call of seasons.next returns again "summer"', () => {
+    let expected = 'summer'
+    let amount_to_iterate = 4
+    let actual
+    for (let i = 0; i <= amount_to_iterate; i++){
+      actual = seasons.next()
+    }
+    expect(actual).toBe(expected)
+    expect(typeof actual).toBe('string')
+    expect(actual).toBeDefined()
+  })
+  test('[14] the 40th call of seasons.next returns "spring"', () => {
+    let expected = 'spring'
+    let amount_to_iterate = 39
+    let actual
+    for (let i = 0; i <= amount_to_iterate; i++){
+      actual = seasons.next()
+    }
+    expect(actual).toBe(expected)
+    expect(typeof actual).toBe('string')
+    expect(actual).toBeDefined()
+  })
   // test('[9] the FIRST call of seasons.next returns "summer"', () => {})
   // test('[10] the SECOND call of seasons.next returns "fall"', () => {})
   // test('[11] the THIRD call of seasons.next returns "winter"', () => {})

@@ -128,6 +128,8 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.count = 0
+    this.seasons_list = ['summer', 'fall', 'winter', 'spring']
   }
 
   /**
@@ -142,10 +144,28 @@ class Seasons {
    * seasons.next() // returns "spring"
    * seasons.next() // returns "summer"
    */
+
+  rollback_count(){
+    this.count = (this.count / this.count) - 1
+  }
+
+  increment_count() {
+    this.count += 1
+  }
+
   next() {
+    if (this.count === this.seasons_list.length){
+      this.rollback_count()
+    }
+
+    let current_season = this.seasons_list[this.count]
+    this.increment_count()
+    return current_season
+
     // ✨ implement
   }
 }
+
 
 class Car {
   /**
