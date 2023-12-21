@@ -177,6 +177,11 @@ class Car {
   constructor(name, tankSize, mpg) {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
+    this.name = name
+    this.tankSize = tankSize
+    this.mpg = mpg
+    this.difference_gas_usage = 0
+    this.difference_miles_driven = 0
     // ✨ initialize whatever other properties are needed
   }
 
@@ -194,9 +199,32 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
+    if (this.tank === 0){
+      return 'Tank empty!'
+    }
+
+    const fuel_usage = Math.round(distance / this.mpg)
+    const is_fuel_usage_more_than_tankSize = fuel_usage > this.tank ? true : false
+
+    if (is_fuel_usage_more_than_tankSize){
+      this.difference_gas_usage = Math.round(fuel_usage - this.tank)
+      this.difference_miles_driven = Math.round(distance) - Math.round(this.tank * this.mpg)
+      this.odometer = this.odometer + Math.round(this.tank * this.mpg)
+      this.tank = 0
+
+    } else {
+      this.tank = Math.round(this.tank - fuel_usage)
+      this.odometer = Math.round(this.odometer + distance)
+
+    }
+
+    return this.odometer
     // ✨ implement
   }
 
+  get_tank(){
+    return this.tank
+  }
   /**
    * [Exercise 6C] Adds gallons to the tank
    * @param {number} gallons - the gallons of fuel we want to put in the tank
@@ -209,6 +237,21 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
+    let amount_can_drive
+    if (this.tank === this.tankSize){
+      amount_can_drive = this.tank * this.mpg
+      return amount_can_drive
+    }
+    
+    if (this.tankSize < gallons){
+      this.tank = this.tankSize
+      //const amount_unable_to_fill = gallons - this.tankSize
+    } else {
+      this.tank = this.tank + gallons
+    }
+
+    amount_can_drive = this.tank * this.mpg
+    return amount_can_drive
     // ✨ implement
   }
 }
